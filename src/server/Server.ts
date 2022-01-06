@@ -12,7 +12,7 @@ export class Server {
   constructor(private readonly routes: Routes) {}
 
   public async run() {
-    const dev = false;
+    const dev = process.env.NODE_ENV !== 'production';
     this.app = express();
     this.nextServer = createNextApp({ dev });
     const requestHandler = this.nextServer.getRequestHandler();
